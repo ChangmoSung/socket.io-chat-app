@@ -11,7 +11,7 @@
 
 <body>
     <div class='chat'>
-        <div class='chat__sidebar'>
+        <div id='sidebar' class='chat__sidebar'>
 
         </div>
 
@@ -20,7 +20,7 @@
 
             <div class='compose'>
                 <form action="" class='sendMessage'>
-                    <input name='message' type="text" placeholder='Messge'>
+                    <input name='message' type="text" placeholder='Messge' required autocomplete='off'>
 
                     <button>Submit</button>
                 </form>
@@ -33,7 +33,7 @@
     <script id='messageTemplate' type='text/html'>
         <div class='message'>
             <p>
-                <span class='message__name'>Some User Name</span>
+                <span class='message__name'>{{username}}</span>
                 <span class='message__meta'>{{createdAt}}</span>
             </p>
 
@@ -44,12 +44,24 @@
     <script id='locationMessageTemplate' type='text/html'>
         <div class='message'>
             <p>
-                <span class='message__name'>Some User Name</span>
+                <span class='message__name'>{{username}}</span>
                 <span class='message__meta'>{{createdAt}}</span>
             </p>
 
             <p><a href='{{url}}' target="_blank">My current location</a></p>
         </div>
+    </script>
+
+    <script id='sidebarTemplate' type='text/html'>
+        <h2 class='roomTitle'>{{room}}</h2>
+
+        <h3 class='listTitle'>Users</h3>
+
+        <ul class='users'>
+            {{#users}}
+                <li>{{username}}</li>
+            {{/users}}
+        </ul>
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
